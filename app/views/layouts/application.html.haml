@@ -8,5 +8,14 @@
     #wrapper
       #header
         %h2 MailByte
+        %p.user 
+          - if loggedIn
+            Hello
+            = session[:user][:name]+"."
+            = link_to "Logout", "/logout"
+            | Balance: 
+            = session[:user][:balance]
+          - else
+            = link_to "Login", "/login"
       #main
         = yield

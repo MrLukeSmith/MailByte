@@ -1,6 +1,8 @@
 %h3 Login
 %p
-  - if isLoggedIn
-    Yes. Don't show a login form. Redirect to the dashboard. 
-  - else
-    No. Show the login page. Register link. Forgotten password.
+  %form{:name => "Login", :method => "post", :action => "login/process"}
+    %input{:id => "email", :name => "email", :type => "text", :placeholder => "Email address"}
+    %br
+    %input{:id => "password", :name => "password", :type => "password", :placeholder => "Password"}
+    %br
+    %input{:id => "loginBtn", :name => "loginBtn", :type => "submit", :value => "Login"}

@@ -4,12 +4,23 @@
 	#header {
 		@include border-radius(10px 10px 0 0);
 		width: auto;
-		background: #CC2200;
+		background: orange;
 		padding: 10px;
+		overflow: auto;
 		h2 {
 			padding: 0;
 			margin: 0;
 			font-size: 30px;
+			float: left;
+		}
+		p {
+			margin: 0;
+			padding: 0;
+			line-height: 30px;
+			font-size: 14px;
+			&.user {
+				float: right;
+			}
 		}
 	}
 	#main {
