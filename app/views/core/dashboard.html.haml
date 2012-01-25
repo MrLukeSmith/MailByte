@@ -1,9 +1,27 @@
 %h3 Dashboard
+%p
+  The dashboard will provide a summary of the users account. E.g. 
+  %br
+  &bullet; The list of the users campaigns, and the number of subscribers for that campaign. 
+  %br
+  Etc..
+  
 %table
   %tr
     %th Campaign name
-    %th Number of subscribers
+    %th Subscribers
+    %th Templates
+    %th Last distributed
   %tr
-    %td January Newsletter 2012
-    %td 37
+    %td Newsletter
+    %td 375
+    %td 4
+    %td Jan2012 (Template. Link to the template) @ 12/1/2012
+    
+%p If the user has enough credits to send the campaign, it will allow them to preview the email first. It'll parse in the name and email of each subscriber to personalise the newsletter.
+%p Once the job has been confirmed. It is stored in a database. A cron, will run, and carry out the tasks one by one. If there is a task/job marked as pending, then another one is not started. A time estimate of when it'll be sent is shown. Shouldn't be more than a few minutes at most. Will have to try it out with multiple accounts, at the same time, to see how effective that is, and adjust the strategy accordingly. 
+%p Provide a basic form, to parse in the information they've request. (you can specify what info you want. e.g. name, address, company, etc.. ). 
+E.g. have it action to : mailbyte.co.uk/web/subscribe. You need to specify the website/s that you'll be parsing in content from. So that the script can check to see if the website the input request originated from is permitted to submit into their campaign.
+<..> A campaign ID has to be specified, so it knows where it's going. 
+%p Sort of like distributor, as used at C4L. Make it an online-based competitor.
     
