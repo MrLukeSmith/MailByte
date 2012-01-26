@@ -3,7 +3,11 @@ class CoreController < ActionController::Base
   layout "application"  
   
   def dashboard
-	
+	@c = Campaign.where(:user_id => session[:user][:id])
+  end
+  
+  def readme
+  
   end
   
  end

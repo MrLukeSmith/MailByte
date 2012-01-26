@@ -1,4 +1,4 @@
-Rsvp::Application.routes.draw do
+MailByte::Application.routes.draw do
   
   root :to => "application#index"
   
@@ -8,6 +8,16 @@ Rsvp::Application.routes.draw do
   
   match '/logout' => "application#logout"
   
+  # Dashboard
+  
   match '/dashboard' => "core#dashboard"
+  
+  match '/dashboard/readme' => "core#readme"
+  
+  # Campaign
+  
+  match '/campaign' => "campaign#index"
+  match '/campaign/new' => "campaign#new"
+  match '/campaign/new/process' => "campaign#new_process"
   
 end

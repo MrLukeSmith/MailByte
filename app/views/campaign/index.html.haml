@@ -1,0 +1,20 @@
+- if @notice
+  %span.notice{:class => @notice['type']}
+    =@notice['msg']
+%h2 
+  Campaigns (#{@c.count}/Account max campaigns)
+  %a.gb{:href => "/campaign/new"} New campaign
+%p
+  - if @c.count > 0
+    %table
+      %tr
+        %th Name
+        %th Date created
+        %th Options
+      - @c.each do |camp|
+        %tr
+          %td= camp[:name]
+          %td= camp[:date_created]
+          %td [Edit][Delete]
+  - else 
+    You don't have any campaigns.

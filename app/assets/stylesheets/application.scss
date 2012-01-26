@@ -6,3 +6,18 @@ body {
 html {
 	margin: 10px;
 }
+
+.notice {
+	display: block;
+	padding: 10px;
+	border: 1px solid #999;
+	@include border-radius(5px);	
+	margin: 0 0 10px 0;
+	font-size: 12px;
+	&.error {
+		@include gradient(#CC2200, #FF2200);
+	}
+	&.success {
+		@include gradient(#99FF66, #33CC00);
+	}
+}

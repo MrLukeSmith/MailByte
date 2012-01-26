@@ -2,4 +2,4 @@
 require File.expand_path('../application', __FILE__)
 
 # Initialize the rails application
-Rsvp::Application.initialize!
+MailByte::Application.initialize!

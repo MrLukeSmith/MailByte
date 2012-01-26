@@ -1,0 +1,16 @@
+- if @notice
+  %span.notice{:class => @notice['type']}
+    =@notice['msg']
+%h3 New campaign
+%form{:id => "newCampaignFrm", :name => "newCampaignFrm", :method => "post", :action => "/campaign/new/process"}
+  %table
+    %tr
+      %td
+        %label{:for => "campaign_name"} Name
+      %td
+        %input{:id => "campaign_name", :name => "campaign_name", :placeholder => "Campaign name"}
+    %tr
+      %td
+      %td
+        %input{:type => "submit", :value => "Save"}
+  
