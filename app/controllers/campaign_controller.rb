@@ -46,5 +46,12 @@ class CampaignController < ActionController::Base
 			redirect_to "/campaign"
 		end
 	end
+	
+	def subscribe
+		@ref = request.referrer
+		# Check api_hash. Ensure it corresponds to the campaign ID.
+		# Check referring URL corresponds to the campaign. 
+		# See which fields have been parsed. If no valid fields, return error. 
+	end
 
 end

@@ -10,7 +10,16 @@
     @c.templates.each do |t|
       
   - else
-    This campaign doesn't have any templates. 
+    This campaign doesn't have any templates. Email templates.
+%h4 
+  Input domains
+  %button New input domain
+%p
+  - if @c.totalInputdomains > 0
+    @c.inputdomains.each do |id|
+      
+  - else
+    This campaign doesn't have any input domains. These are the domains which the user has stated are going to be submitting subscribers into this campaign.
 %h4 
   Subscribers
   %button Generate subscription form
