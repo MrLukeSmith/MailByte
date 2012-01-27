@@ -15,4 +15,11 @@ module CampaignHelper
 		return Digest::SHA1.hexdigest (Time.now.to_s + rand(9999).to_s)
 	end
 
+	def permittedToView(id)
+		if Campaign.where(:id => id, :user_id => session[:user][:id]).count > 0 then
+			return true
+		else
+			return false
+		end
+	end
 end

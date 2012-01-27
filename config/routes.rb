@@ -19,5 +19,6 @@ MailByte::Application.routes.draw do
   match '/campaign' => "campaign#index"
   match '/campaign/new' => "campaign#new"
   match '/campaign/new/process' => "campaign#new_process"
+  match '/campaign/:id' => "campaign#overview"
   
 end

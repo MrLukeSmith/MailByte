@@ -1,0 +1,22 @@
+%p
+  %small
+    = link_to "Back to campaigns", "/campaign"
+%h2= @c[:name]
+%h4 
+  Templates
+  %button New template
+%p
+  - if @c.totalTemplates > 0
+    @c.templates.each do |t|
+      
+  - else
+    This campaign doesn't have any templates. 
+%h4 
+  Subscribers
+  %button Generate subscription form
+%p
+  - if @c.totalSubscribers > 0
+    @c.subscribers.each do |s|
+      
+  - else
+    This campaign doesn't have any subscribers. 

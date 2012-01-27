@@ -15,10 +15,10 @@
         %th Options
       - @c.each do |camp|
         %tr
-          %td= camp[:name]
+          %td= link_to camp[:name], "/campaign/#{camp[:id]}"
           %td= camp[:date_created]
           %td= camp.totalSubscribers
-          %td #
+          %td= camp.totalTemplates
           %td [Overview][Edit][Delete]
   - else 
     You don't have any campaigns.
