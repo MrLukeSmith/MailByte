@@ -1,6 +1,7 @@
 - if @notice
   %span.notice{:class => @notice['type']}
     =@notice['msg']
+
 %h3 New campaign
 %form{:id => "newCampaignFrm", :name => "newCampaignFrm", :method => "post", :action => "/campaign/new/process"}
   %table

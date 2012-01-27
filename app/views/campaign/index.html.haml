@@ -10,11 +10,15 @@
       %tr
         %th Name
         %th Date created
+        %th Subscribers
+        %th Templates
         %th Options
       - @c.each do |camp|
         %tr
           %td= camp[:name]
           %td= camp[:date_created]
-          %td [Edit][Delete]
+          %td= camp.totalSubscribers
+          %td #
+          %td [Overview][Edit][Delete]
   - else 
     You don't have any campaigns.

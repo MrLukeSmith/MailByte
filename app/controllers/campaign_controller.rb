@@ -5,7 +5,8 @@ class CampaignController < ActionController::Base
 	def new 
 		if session[:notice] != ""
 			@notice = session[:notice]
-			session[:notice] = nil
+			@fields = session[:fields]
+			session[:notice], session[:fields] = nil
 		end
 	end
 	
@@ -21,7 +22,7 @@ class CampaignController < ActionController::Base
 		if params[:campaign_name] != ""
 			if nameAvailable(params[:campaign_name])
 				# Make the new campaign record.
-				c = Campaign.create(:user_id => session[:user][:id], :name => params[:campaign_name], :date_created => Time.new)
+				c = Campaign.create(:user_id => session[:user][:id], :name => params[:campaign_name], :date_created => Time.new, :api_hash => generateHash)
 				c.save
 				session[:notice] = {'type' => "success", 'msg' => "The campaign '#{params[:campaign_name]}' has been added."}
 				redirect_to "/campaign"

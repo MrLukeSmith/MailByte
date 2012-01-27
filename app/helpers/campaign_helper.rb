@@ -1,4 +1,6 @@
 module CampaignHelper
+	
+	require 'digest/sha1'
 
 	def nameAvailable(campaign_name)
 		c = Campaign.where(:name => campaign_name, :user_id => session[:user][:id])
@@ -7,6 +9,10 @@ module CampaignHelper
 		else
 			return false
 		end
+	end
+	
+	def generateHash
+		return Digest::SHA1.hexdigest (Time.now.to_s + rand(9999).to_s)
 	end
 
 end
