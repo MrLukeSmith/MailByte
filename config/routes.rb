@@ -2,7 +2,10 @@ MailByte::Application.routes.draw do
   
   root :to => "application#index"
   
-  #Application  
+  # Legal
+  match '/privacy-policy' => "application#privacy_policy"
+  
+  # Application  
   match '/login' => "application#login"  
   match '/login/process' => "application#process_login"  
   match '/logout' => "application#logout"
@@ -24,5 +27,6 @@ MailByte::Application.routes.draw do
   match '/campaign/:id/template/new' => "campaign#new_template"
   match '/campaign/:id/domain/new' => "campaign#new_domain"  
   match '/campaign/:id/domain/new/process' => "campaign#process_new_domain"  
+  match '/campaign/:id/subscribe/form' => "campaign#form_subscribe"
   
 end

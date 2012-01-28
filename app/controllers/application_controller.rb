@@ -42,4 +42,8 @@ class ApplicationController < ActionController::Base
     
   end
   
+  def privacy_policy
+    
+  end
+  
 end

@@ -28,7 +28,7 @@
     This campaign doesn't have any input domains. These are the domains which the user has stated are going to be submitting subscribers into this campaign.
 %h4 
   Subscribers
-  %button Generate subscription form
+  %a.gb{:href => "/campaign/#{params[:id]}/subscribe/form"} Generate subscription form
 %p
   - if @c.totalSubscribers > 0
     %table
