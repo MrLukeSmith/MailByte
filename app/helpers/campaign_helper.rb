@@ -11,6 +11,11 @@ module CampaignHelper
 		end
 	end
 	
+	def domainAvailable(campaign, domain)
+		id = Inputdomain.where(:campaign_id => campaign, :domain => domain)
+		if id.count == 0 then return true else return false end
+	end
+	
 	def generateHash
 		return Digest::SHA1.hexdigest (Time.now.to_s + rand(9999).to_s)
 	end

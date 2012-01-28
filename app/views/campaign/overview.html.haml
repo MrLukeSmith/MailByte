@@ -1,23 +1,29 @@
+- if @notice
+  %span.notice{:class => @notice['type']}
+    =@notice['msg']
 %p
   %small
     = link_to "Back to campaigns", "/campaign"
 %h2= @c[:name]
 %h4 
   Templates
-  %button New template
+  %a.gb{:href => "/campaign/#{params[:id]}/template/new"} New template
 %p
   - if @c.totalTemplates > 0
-    @c.templates.each do |t|
-      
+    - @c.templates.each do |t|
+      = t.to_s
   - else
     This campaign doesn't have any templates. Email templates.
 %h4 
   Input domains
-  %button New input domain
+  %a.gb{:href => "/campaign/#{params[:id]}/domain/new"} New input domain
 %p
   - if @c.totalInputdomains > 0
-    @c.inputdomains.each do |id|
-      
+    %table
+      - @c.inputdomains.each do |id|
+        %tr
+          %td= id.domain
+          %td [Edit][Remove] {Inline dynamic editing?}
   - else
     This campaign doesn't have any input domains. These are the domains which the user has stated are going to be submitting subscribers into this campaign.
 %h4 
@@ -25,7 +31,11 @@
   %button Generate subscription form
 %p
   - if @c.totalSubscribers > 0
-    @c.subscribers.each do |s|
+    %table
+      - @c.subscribers.limit(3).order("id DESC").each do |s|
+        %tr
+          %td #{s.title} #{s.forename} #{s.surname}
+          %td= s.email
       
   - else
-    This campaign doesn't have any subscribers. 
+    This campaign doesn't have any subscribers. This will show the last 10? subscribers. You will then have to click a link to view all of the subscribers, so the page isn't chuffed with stuff. 

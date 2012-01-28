@@ -18,8 +18,11 @@ MailByte::Application.routes.draw do
   match '/campaign' => "campaign#index"
   match '/campaign/new' => "campaign#new"
   match '/campaign/new/process' => "campaign#new_process"
-  match '/campaign/:id' => "campaign#overview"
   
-
+  # Specific campaign
+  match '/campaign/:id' => "campaign#overview"
+  match '/campaign/:id/template/new' => "campaign#new_template"
+  match '/campaign/:id/domain/new' => "campaign#new_domain"  
+  match '/campaign/:id/domain/new/process' => "campaign#process_new_domain"  
   
 end

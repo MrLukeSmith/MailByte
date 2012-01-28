@@ -12,6 +12,7 @@
         %th Date created
         %th Subscribers
         %th Templates
+        %th Input domains
         %th Options
       - @c.each do |camp|
         %tr
@@ -19,6 +20,7 @@
           %td= camp[:date_created]
           %td= camp.totalSubscribers
           %td= camp.totalTemplates
-          %td [Overview][Edit][Delete]
+          %td= camp.totalInputdomains
+          %td [Configure][Delete]
   - else 
     You don't have any campaigns.

@@ -39,6 +39,11 @@ class CampaignController < ActionController::Base
 	end
 	
 	def overview
+		if session[:notice] != ""
+			@notice = session[:notice]
+			@fields = session[:fields]
+			session[:notice], session[:fields] = nil
+		end
 		if permittedToView(params[:id])
 			@c = Campaign.find(params[:id])
 		else
@@ -52,6 +57,38 @@ class CampaignController < ActionController::Base
 		# Check api_hash. Ensure it corresponds to the campaign ID.
 		# Check referring URL corresponds to the campaign. 
 		# See which fields have been parsed. If no valid fields, return error. 
+	end
+	
+	def new_template
+		
+	end
+	
+	def new_domain 
+		if session[:notice] != ""
+			@notice = session[:notice]
+			@fields = session[:fields]
+			session[:notice], session[:fields] = nil
+		end
+	end
+	
+	def process_new_domain
+		if params[:domain] != ""
+			if domainAvailable(params[:id], params[:domain])
+				# Make the new campaign record.
+				id = Inputdomain.create(:campaign_id => params[:id], :domain => params[:domain])
+				id.save
+				session[:notice] = {'type' => "success", 'msg' => "The domain '#{params[:domain]}' has been added."}
+				redirect_to "/campaign/#{params[:id]}"
+			else
+				# Return to the form. Pre-populate field. Error: Name = In use already.
+				session[:fields] = params
+				session[:notice] = {'type' => "error", 'msg' => "You already have the domain '#{params[:domain]}' associated with this campaign."}
+				redirect_to "/campaign/#{params[:id]}/domain/new"
+			end
+		else
+			session[:notice] = {'type' => "error", 'msg' => "You need to enter a domain name"}
+			redirect_to "/campaign/#{params[:id]}/domain/new"
+		end
 	end
 
 end
