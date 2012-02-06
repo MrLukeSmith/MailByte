@@ -63,6 +63,12 @@ class CampaignController < ActionController::Base
 		
 	end
 	
+	def upload_template
+		#post = Template.save(params[:templatefile])
+		@info = params[:templatefile]
+		#render :text => "File has been uploaded successfully"
+	end
+	
 	def new_domain 
 		if session[:notice] != ""
 			@notice = session[:notice]

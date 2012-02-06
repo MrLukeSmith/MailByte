@@ -1,4 +1,8 @@
 %h2
   New Template Form
 %p
-  process (submit to /process) to add / return. Like with the campaign. Upload the template. Store details in Database. Format the name of the file ? encrypt it ? 
+  Process (submit to /process) to add / return. Like with the campaign. Upload the template. Store details in Database. Format the name of the file ? encrypt it ? 
+%form{:action => "/campaign/#{params[:id]}/template/upload", :method => "post", :multipart => "true"}
+  %label File
+  %input{:type => "file", :name => "templatefile", :id => "templatefile"}
+  %input{:type => "submit", :value => "Upload"}

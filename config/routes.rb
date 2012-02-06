@@ -25,6 +25,8 @@ MailByte::Application.routes.draw do
   # Specific campaign
   match '/campaign/:id' => "campaign#overview"
   match '/campaign/:id/template/new' => "campaign#new_template"
+  match '/campaign/:id/template/upload' => "campaign#upload_template"
+  match '/campaign/:id/template' => "campaign#template"
   match '/campaign/:id/domain/new' => "campaign#new_domain"  
   match '/campaign/:id/domain/new/process' => "campaign#process_new_domain"  
   match '/campaign/:id/subscribe/form' => "campaign#form_subscribe"
