@@ -1,0 +1,69 @@
+%h2 Generate subscription form for #{ Campaign.find(params[:id]).name }
+.fields
+  %h4 Form fields
+  %p 
+    Select the input fields you would like present on the subscription form, and we'll generate a basic HTML form for you use to and style as required.
+  %table
+    %tr
+      %td
+        %input{:type => "checkbox", :id => "thetitle", :name => "thetitle", :class => "formField"}
+        %label{:for => "title"} Title
+    %tr
+      %td
+        %input{:type => "checkbox", :id => "theforename", :name => "theforename", :class => "formField"}
+        %label{:for => "forename"} Forename
+    %tr
+      %td
+        %input{:type => "checkbox", :id => "thesurname", :name => "thesurname", :class => "formField"} 
+        %label{:for => "surname"} Surname
+.form
+  %h4 Generated Form (Click button to copy to clipboard)
+  %p 
+    Show it in styled (manual syntax highlighting. Remove "snippet" js and CSS files) mode. Show it in plain text mode, and have a copy to clipboard feature. To copy the plain text. Also a preview of what the form will look like (standard HTML). Provide some possible styling options too ? Couple of different style sheets?
+  %p
+    Submittion into this campaign, using a form like the one below, will only be accepted from your specified input domains. These are: ... /OR/ You don't have any. Click here to add one now.
+  %p
+    The below form can be modified to fit your application. The field names, and the hidden fields need to be present in order for the form to submit correctly. 
+  %p
+    Make it so that on page load, it checks to see if the fields are checked. If they are, then set the relevant P tag to display appropriately. (So it works correctly on refresh).
+  .generated_form
+    .syntax
+      %strong Syntax
+      %p &lt;form method="post" action="http://127.0.0.1/campaign/in"&gt;
+      %p.t1 &lt;input type="hidden" name="campaign_hash" value="#{ Campaign.find(params[:id]).api_hash}" /&gt;
+      %p.t1 &lt;input type="hidden" name="campaign_id" value="#{ params[:id] }" /&gt;
+      %p.t1.formthetitle
+        &lt;label for="title"&gt;Title&lt;/label&gt;
+        &lt;input type="text" name="title" id="title" placeholder="Title" /&gt;
+      %p.t1.formtheforename
+        &lt;label for="forename"&gt;Forename&lt;/label&gt;
+        &lt;input type="text" name="forename" id="forename" placeholder="Forename" /&gt;
+      %p.t1.formthesurname
+        &lt;label for="surname"&gt;Surname&lt;/label&gt;
+        &lt;input type="text" name="surname" id="surname" placeholder="Surname" /&gt;
+      %p.t1
+        &lt;label for="email"&gt;Email&lt;/label&gt;
+        &lt;input type="text" name="email" id="email" placeholder="Email" /&gt;
+      %p.t1
+        &lt;input type="submit" value="Subscribe" /&gt;
+      %p &lt;/form&gt;
+  .generated_form
+    .plain
+      %strong Preview
+      %form{:method => "post", :action => "http://127.0.0.1/campaign/in"}
+        %input{:type => "hidden", :name => "campaign_hash", :value => "#{ Campaign.find(params[:id]).api_hash}"}
+        %input{:type => "hidden", :name => "campaign_id", :value => "#{ params[:id] }"}
+        %p.t1.formthetitle
+          %label{:for => "title"} Title
+          %input{:type => "text", :name => "title", :id => "title", :placeholder => "Title"}
+        %p.t1.formtheforename
+          %label{:for => "forename"} Forename
+          %input{:type => "text", :name => "forename", :id => "forename", :placeholder => "Forename"}
+        %p.t1.formthesurname
+          %label{:for => "surname"} Surname
+          %input{:type => "text", :name => "surname", :id => "surname", :placeholder => "Surname"}
+        %p.t1
+          %label{:for => "email"} Email
+          %input{:type => "text", :name => "email", :id => "email", :placeholder => "Email"}
+        %p.t1
+          %input{:type => "submit", :value => "Subscribe"}

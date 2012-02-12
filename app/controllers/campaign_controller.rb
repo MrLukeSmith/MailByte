@@ -65,6 +65,15 @@ class CampaignController < ActionController::Base
 	
 	def upload_template
 		#post = Template.save(params[:templatefile])
+    name =  params[:templatefile].original_filename
+		directory = "#{Rails.root}/templates" # the path of the upload directory
+		path = File.join(directory, name) # create the file path
+    if FileTest.exists?(path)
+      @notice = "File already exists"
+		else
+      File.open(path, "wb") { |f| f.write(params[:templatefile].read) }
+      @notice = "File uploaded"
+    end
 		@info = params[:templatefile]
 		#render :text => "File has been uploaded successfully"
 	end

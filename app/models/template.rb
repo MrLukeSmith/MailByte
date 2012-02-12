@@ -2,12 +2,17 @@ class Template < ActiveRecord::Base
 	belongs_to :campaign
 	
 	def self.save(upload)
-		name =  upload['templatefile'].name
-		directory = "templates"
+		name =  upload.original_filename
+		directory = "#{Rails.root}/templates"
 		# create the file path
 		path = File.join(directory, name)
 		# write the file
-		File.open(path, "wb") { |f| f.write(upload['templatefile'].read) }
+    if FileTest.exists?(path)
+      @notice = "File already exists"
+		else
+      File.open(path, "wb") { |f| f.write(upload.read) }
+      @notice = "File uploaded"
+    end
 	end
 
 end
