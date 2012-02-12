@@ -56,12 +56,14 @@
 				padding: 10px;
 				margin: 10px 0 0 0;
 				font-family: "Lucida Console";
-				.plain { display: none; }
+				.plain { 
+					
+				}
 				p {
 					margin: 0;
 					&.t1 { margin: 0 0 0 25px; }
 					&.t2 { margin: 0 0 0 50px; }
-					&.formtitle, &.formforename, &.formsurname, &.formemail { 
+					&.formthetitle, &.formtheforename, &.formthesurname, &.formemail { 
 						display: none;
 					}
 				}

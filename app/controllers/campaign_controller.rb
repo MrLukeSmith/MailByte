@@ -96,5 +96,14 @@ class CampaignController < ActionController::Base
 			redirect_to "/campaign/#{params[:id]}/domain/new"
 		end
 	end
+  
+  def subscribers
+    if permittedToView(params[:id])
+			@c = Campaign.find(params[:id])
+		else
+			session[:notice] = {'type' => "error", 'msg' => "You are not authorised to view that campaign."}
+			redirect_to "/campaign"
+		end
+  end
 
 end

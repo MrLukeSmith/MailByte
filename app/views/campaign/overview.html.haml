@@ -36,6 +36,6 @@
         %tr
           %td #{s.title} #{s.forename} #{s.surname}
           %td= s.email
-      
+    %a{:href => "/campaign/#{params[:id]}/subscribe"} View all
   - else
     This campaign doesn't have any subscribers. This will show the last 10? subscribers. You will then have to click a link to view all of the subscribers, so the page isn't chuffed with stuff. 

@@ -6,15 +6,15 @@
   %table
     %tr
       %td
-        %input{:type => "checkbox", :id => "title", :name => "title", :class => "formField"}
+        %input{:type => "checkbox", :id => "thetitle", :name => "thetitle", :class => "formField"}
         %label{:for => "title"} Title
     %tr
       %td
-        %input{:type => "checkbox", :id => "forename", :name => "forename", :class => "formField"}
+        %input{:type => "checkbox", :id => "theforename", :name => "theforename", :class => "formField"}
         %label{:for => "forename"} Forename
     %tr
       %td
-        %input{:type => "checkbox", :id => "surname", :name => "surname", :class => "formField"} 
+        %input{:type => "checkbox", :id => "thesurname", :name => "thesurname", :class => "formField"} 
         %label{:for => "surname"} Surname
 .form
   %h4 Generated Form (Click button to copy to clipboard)
@@ -32,18 +32,38 @@
       %p &lt;form method="post" action="http://127.0.0.1/campaign/in"&gt;
       %p.t1 &lt;input type="hidden" name="campaign_hash" value="#{ Campaign.find(params[:id]).api_hash}" /&gt;
       %p.t1 &lt;input type="hidden" name="campaign_id" value="#{ params[:id] }" /&gt;
-      %p.t1.formtitle
-        &lt;input type="text" name="title" placeholder="Title" /&gt;
-      %p.t1.formforename
-        &lt;input type="text" name="forename" placeholder="Forename" /&gt;
-      %p.t1.formsurname
-        &lt;input type="text" name="surname" placeholder="Surname" /&gt;
+      %p.t1.formthetitle
+        &lt;label for="title"&gt;Title&lt;/label&gt;
+        &lt;input type="text" name="title" id="title" placeholder="Title" /&gt;
+      %p.t1.formtheforename
+        &lt;label for="forename"&gt;Forename&lt;/label&gt;
+        &lt;input type="text" name="forename" id="forename" placeholder="Forename" /&gt;
+      %p.t1.formthesurname
+        &lt;label for="surname"&gt;Surname&lt;/label&gt;
+        &lt;input type="text" name="surname" id="surname" placeholder="Surname" /&gt;
       %p.t1
-        &lt;input type="text" name="email" placeholder="Email" /&gt;
+        &lt;label for="email"&gt;Email&lt;/label&gt;
+        &lt;input type="text" name="email" id="email" placeholder="Email" /&gt;
+      %p.t1
+        &lt;input type="submit" value="Subscribe" /&gt;
       %p &lt;/form&gt;
+  .generated_form
     .plain
-      %strong Plain text
-      &lt;form method="post" action="http://127.0.0.1/campaign/in"&gt;
-      &lt;input type="hidden" name="campaign_hash" value="#{ Campaign.find(params[:id]).api_hash}" /&gt;
-      &lt;input type="hidden" name="campaign_id" value="#{ params[:id] }" /&gt;
-      &lt;/form&gt;
+      %strong Preview
+      %form{:method => "post", :action => "http://127.0.0.1/campaign/in"}
+        %input{:type => "hidden", :name => "campaign_hash", :value => "#{ Campaign.find(params[:id]).api_hash}"}
+        %input{:type => "hidden", :name => "campaign_id", :value => "#{ params[:id] }"}
+        %p.t1.formthetitle
+          %label{:for => "title"} Title
+          %input{:type => "text", :name => "title", :id => "title", :placeholder => "Title"}
+        %p.t1.formtheforename
+          %label{:for => "forename"} Forename
+          %input{:type => "text", :name => "forename", :id => "forename", :placeholder => "Forename"}
+        %p.t1.formthesurname
+          %label{:for => "surname"} Surname
+          %input{:type => "text", :name => "surname", :id => "surname", :placeholder => "Surname"}
+        %p.t1
+          %label{:for => "email"} Email
+          %input{:type => "text", :name => "email", :id => "email", :placeholder => "Email"}
+        %p.t1
+          %input{:type => "submit", :value => "Subscribe"}

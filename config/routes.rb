@@ -30,5 +30,6 @@ MailByte::Application.routes.draw do
   match '/campaign/:id/domain/new' => "campaign#new_domain"  
   match '/campaign/:id/domain/new/process' => "campaign#process_new_domain"  
   match '/campaign/:id/subscribe/form' => "campaign#form_subscribe"
+  match '/campaign/:id/subscribe' => "campaign#subscribers"
   
 end

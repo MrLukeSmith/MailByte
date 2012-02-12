@@ -1,0 +1,13 @@
+%h2 Subscribers for #{ Campaign.find(params[:id]).name }
+%p
+  - if @c.totalSubscribers > 0
+    %table
+      %tr
+        %th Name
+        %th Email
+      - @c.subscribers.order("id DESC").each do |s|
+        %tr
+          %td #{s.title} #{s.forename} #{s.surname}
+          %td= s.email
+  - else
+    No-one has subscribed to this campaign yet. 
