@@ -1,10 +1,5 @@
-%h2
-  Uploaded file information
-%p
-  Original Filename: 
-  #{@info.original_filename}
-%p
-  Content Type: 
-  #{@info.content_type}
-%p
-  #{@notice}
+- if @t
+  %h2 Template added successfully
+- else 
+  %h2 Woops, something went wrong
+

@@ -60,21 +60,36 @@ class CampaignController < ActionController::Base
 	end
 	
 	def new_template
-		
+		if session[:notice] != ""
+			@notice = session[:notice]
+			session[:notice] = nil
+		end
 	end
 	
 	def upload_template
 		#post = Template.save(params[:templatefile])
-    name =  params[:templatefile].original_filename
-		directory = "#{Rails.root}/templates" # the path of the upload directory
-		path = File.join(directory, name) # create the file path
-    if FileTest.exists?(path)
-      @notice = "File already exists"
-		else
-      File.open(path, "wb") { |f| f.write(params[:templatefile].read) }
-      @notice = "File uploaded"
+    if params[:templatefile] && params[:templatename]
+      if Template.where("`campaign_id` = '#{params[:id]}' AND `name` = '#{params[:templatename]}'").count == 0
+        name =  params[:templatefile].original_filename
+        # Check to see if the template name given has already been assigned to a template associated with this campaign ID.
+        directory = "#{Rails.root}/templates" # the path of the upload directory
+        t = Template.new
+        t.campaign_id = params[:id]
+        t.name = params[:templatename]
+        t.save
+        newName = [ t.id.to_s, name.split(".").last ].join(".") # Only allow .html files.
+        path = File.join(directory, newName) # create the file path
+        File.open(path, "wb") { |f| f.write(params[:templatefile].read) }
+        session[:notice] = {'type' => "success", 'msg' => "The template '#{params[:templatename]}' has been added."}
+        redirect_to "/campaign/#{ params[:id] }"
+      else
+        session[:notice] = {'type' => "error", 'msg' => "A template named '#{params[:templatename]}' is already associated with this campaign."}
+        redirect_to "/campaign/#{ params[:id] }/template/new"
+      end
+    else
+      session[:notice] = {'type' => "error", 'msg' => "A template file, and a template name, must be specified."}
+      redirect_to "/campaign/#{ params[:id] }/template/new"
     end
-		@info = params[:templatefile]
 		#render :text => "File has been uploaded successfully"
 	end
 	

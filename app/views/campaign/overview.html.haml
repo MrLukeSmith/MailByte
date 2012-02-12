@@ -10,8 +10,14 @@
   %a.gb{:href => "/campaign/#{params[:id]}/template/new"} New template
 %p
   - if @c.totalTemplates > 0
-    - @c.templates.each do |t|
-      = t.to_s
+    %table
+      %tr
+        %th Name
+        %th Date Created
+      - @c.templates.order("id DESC").each do |t|
+        %tr
+          %td= t.name
+          %td= t.date_uploaded
   - else
     This campaign doesn't have any templates. Email templates.
 %h4 

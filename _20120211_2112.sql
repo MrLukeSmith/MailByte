@@ -1,7 +1,7 @@
 -- MySQL Administrator dump 1.4
 --
 -- ------------------------------------------------------
--- Server version	5.1.58-1ubuntu1
+-- Server version	5.1.54-1ubuntu4
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -110,8 +110,9 @@ CREATE TABLE  `rsvp_development`.`templates` (
   `campaign_id` int(20) NOT NULL,
   `date_uploaded` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `name` varchar(255) NOT NULL,
+  `last_changed` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rsvp_development`.`templates`
@@ -119,6 +120,7 @@ CREATE TABLE  `rsvp_development`.`templates` (
 
 /*!40000 ALTER TABLE `templates` DISABLE KEYS */;
 LOCK TABLES `templates` WRITE;
+INSERT INTO `rsvp_development`.`templates` VALUES  (1,1,'2012-02-12 14:43:28','Backup Newsletter','2012-02-12 14:43:28');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `templates` ENABLE KEYS */;
 
