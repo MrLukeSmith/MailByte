@@ -1,0 +1,9 @@
+File Uploads
+----------------
+- It checks to see if the file already exists. 
+- You can only have a certain number of templates per campaign. This value depends on the package that you are on at the moment.
+- If you haven't used up your template allocation for the campaign / account, then the file uploads. It renames the file, to match its template ID. So it creates the database entry first. Then it uploads the file (FILE_ID.FILE_EXTENSION). It splits the file on the first '.', and appends the latter part of the split to the end of the file ID to create the file name. 
+- The upload_date, last_modified, title, file_name, file_path (and any other relevant information) to the database. Copies the file to templates/FILENAME
+Store them in groups of 1000, 100 for effiecieny purposes ? 
+"templates/0/.." -- The first 100 are stored in this directory
+"templates/1/" -- The second 100 are stored in this directory.  
