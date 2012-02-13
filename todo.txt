@@ -7,3 +7,5 @@ File Uploads
 Store them in groups of 1000, 100 for effiecieny purposes ? 
 "templates/0/.." -- The first 100 are stored in this directory
 "templates/1/" -- The second 100 are stored in this directory.  
+
+Check, server side, that the file is in fact a HTML file and nothing else. Use the same technique as the JS. 
